@@ -79,7 +79,9 @@ endif
 
 # Touch
 PRODUCT_COPY_FILES += \
-	device/rockchip/rk3288/touch/fts_ts.idc:system/usr/idc/fts_ts.idc
+	device/rockchip/rk3288/touch/fts_ts.idc:system/usr/idc/fts_ts.idc \
+	device/rockchip/rk3288/touch/ads7846.idc:system/usr/idc/ads7846.idc
+
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
