@@ -98,3 +98,11 @@ $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-he
 
 
 $(call inherit-product-if-exists, vendor/rockchip/rk3288/device-vendor.mk)
+
+# AsusDebugger related packages
+PRODUCT_PACKAGES += \
+    asus-debugger-d \
+    klogger \
+    tcpdump2 \
+    AsusDebugger \
+    debugger.conf
