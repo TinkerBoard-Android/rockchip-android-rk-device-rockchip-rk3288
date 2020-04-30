@@ -20,3 +20,4 @@ add_lunch_combo rk3288_box-userdebug
 add_lunch_combo rk3288_vr-userdebug
 add_lunch_combo rk3288_vr-user
 add_lunch_combo rk3288-eng
+add_lunch_combo WW_Tinker_Board-userdebug
