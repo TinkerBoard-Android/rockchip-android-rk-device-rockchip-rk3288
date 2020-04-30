@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+ASUS_TARGET_DEVICE := ASUS_TINKERBOARD
+
 PRODUCT_PACKAGES += \
     memtrack.$(TARGET_BOARD_PLATFORM) \
     WallpaperPicker \
