@@ -105,4 +105,4 @@ PRODUCT_PACKAGES += \
     klogger \
     tcpdump2 \
     AsusDebugger \
-    debugger.conf
+    debugger_WifiOnly.conf
