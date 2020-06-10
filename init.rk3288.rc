@@ -33,8 +33,8 @@ on init
     chown root system /dev/cec0
     chmod 0664 /dev/cec0
     #for backlight control
-    chown system system /sys/devices/platform/ff150000.i2c/i2c-3/3-0045/tinker_mcu_bl
-    chmod 0644 /sys/devices/platform/ff150000.i2c/i2c-3/3-0045/tinker_mcu_bl
+    chown system system /sys/class/backlight/panel_backlight/brightness
+    chmod 0644 /sys/class/backlight/panel_backlight/brightness
 
 on verity-logging
     exec u:r:slideshow:s0 -- /sbin/slideshow warning/verity_red_1 warning/verity_red_2
