@@ -1,5 +1,10 @@
 #! /system/bin/sh
 
+board_info=`cat /proc/board_info`
+if [ "${board_info}" != "Tinker Board S" ] && [ "${board_info}" != "Tinker R/BR" ] && [ "${board_info}" != "Tinker Board S/HV" ]; then
+	exit 0
+fi
+
 source /system/etc/audio.conf
 
 if [ "${jack_auto_switch}" == "on" ]; then
