@@ -27,6 +27,16 @@ on boot
     chown system system /sys/class/devfreq/dmc/system_status
     chmod 0660 /sys/class/devfreq/dmc/system_status
 
+    # For 40 pin GPIO
+    chmod 0666 /sys/class/gpio/export
+    chmod 0666 /sys/class/gpio/unexport
+
+    # For 40 pin PWM
+    chmod 0666 /sys/class/pwm/pwmchip2/export
+    chmod 0666 /sys/class/pwm/pwmchip2/unexport
+    chmod 0666 /sys/class/pwm/pwmchip3/export
+    chmod 0666 /sys/class/pwm/pwmchip3/unexport
+
 on init
     # Load persistent dm-verity state
     verity_load_state

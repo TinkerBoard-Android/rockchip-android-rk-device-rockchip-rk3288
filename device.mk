@@ -106,3 +106,7 @@ PRODUCT_PACKAGES += \
     tcpdump2 \
     AsusDebugger \
     debugger_WifiOnly.conf
+
+# for mraa lib
+PRODUCT_COPY_FILES += \
+	device/rockchip/rk3288/libmraa/lib/libmraa.so:vendor/lib/libmraa.so
