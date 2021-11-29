@@ -1,8 +1,18 @@
 #! /system/bin/sh
 
-board_info=`cat /proc/board_info`
-if [ "${board_info}" != "Tinker Board S" ] && [ "${board_info}" != "Tinker R/BR" ] && [ "${board_info}" != "Tinker Board S/HV" ]; then
-	exit 0
+projectid=`cat /proc/projectid`
+boardid=`cat /proc/boardid`
+echo project=${projectid};
+echo boardid=${boardid};
+
+if [ "${projectid}" == "7" ]; then
+	if [ "${boardid}" == "0" ]; then
+		exit 0
+	elif [ "${boardid}" == "1" ]; then
+		exit 0
+	elif [ "${boardid}" == "2" ]; then
+		exit 0
+	fi
 fi
 
 source /system/etc/audio.conf
