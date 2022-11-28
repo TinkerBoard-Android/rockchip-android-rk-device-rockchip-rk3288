@@ -1,5 +1,4 @@
 #!/bin/bash
-
 ARCH=arm
 LUNCH=WW_Tinker_Board-userdebug
 UBOOT_DEFCONFIG=rk3288_secure_defconfig
@@ -9,20 +8,17 @@ JOBS=$(nproc)
 
 usage()
 {
-    echo "USAGE: build [-ovj] [-n BUILD_NUMBER] [-d TARGET_FILES_OLD]"
+    echo "USAGE: build [-ovj] [-n BUILD_NUMBER] [-d PREVIOUS_TARGET-FILES_ZIPFILE]"
     echo "-o                    -Generate ota package"
     echo "-v                    -Set build version name for output image folder"
     echo "-j                    -Build jobs"
-    echo "-n                    -Set build number"
-    echo "-d                    -Set old target files for delta package"
+    echo "-n                    -Set the build number"
+    echo "-d                    -Set the previous target-files zipfile to build the incremental update"
     exit 1
 }
 
-BUILD_NUMBER="eng"-"$(date  +%Y%m%d.%H%M)"
-RELEASE_NAME=Tinker_Board-AndroidN-"$BUILD_NUMBER"
-
 # check pass argument
-while getopts "ov:j:n:d:" arg
+while getopts "ovj:n:d:" arg
 do
     case $arg in
         o)
@@ -37,14 +33,15 @@ do
             ;;
 	n)
             BUILD_NUMBER="$OPTARG"-"$(date  +%Y%m%d)"
-            RELEASE_NAME=Tinker_Board-AndroidN-V"$BUILD_NUMBER"
             ;;
 	d)
-            TARGET_FILES_OLD=$OPTARG
+            echo "Will build the ota package"
+            BUILD_OTA=true
+            PREVIOUS_TARGET_FILES=$OPTARG
 	    ;;
         ?)
             usage ;;
     esac
 done
 
-source device/rockchip/common/build_base.sh -a $ARCH -l $LUNCH -u $UBOOT_DEFCONFIG -k $KERNEL_DEFCONFIG -d $KERNEL_DTS -j $JOBS -n $BUILD_NUMBER -r $RELEASE_NAME -e $TARGET_FILES_OLD
+source device/rockchip/common/build_base.sh -a $ARCH -l $LUNCH -u $UBOOT_DEFCONFIG -k $KERNEL_DEFCONFIG -d $KERNEL_DTS -j $JOBS
